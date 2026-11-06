@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+
+/*
+ * SorobanLens design tokens.
+ * The raw palette lives in CSS custom properties so the theme can be switched
+ * at runtime (data-theme on <html>). Tailwind utilities reference the tokens
+ * through `@theme inline`, e.g. `bg-surface`, `text-muted`, `border-border`.
+ */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --sl-bg: #0a0c10;
+  --sl-surface: #10131a;
+  --sl-surface-2: #161a23;
+  --sl-surface-3: #1d2230;
+  --sl-border: #232937;
+  --sl-border-strong: #333a4c;
+  --sl-fg: #e7e9ef;
+  --sl-muted: #a0a8ba;
+  --sl-subtle: #6d7589;
+  --sl-accent: #3ad6c0;
+  --sl-accent-fg: #04201c;
+  --sl-accent-soft: rgb(58 214 192 / 0.12);
+  --sl-success: #4ade80;
+  --sl-success-soft: rgb(74 222 128 / 0.12);
+  --sl-danger: #f87171;
+  --sl-danger-soft: rgb(248 113 113 / 0.12);
+  --sl-warning: #fbbf24;
+  --sl-warning-soft: rgb(251 191 36 / 0.12);
+  --sl-info: #60a5fa;
+  --sl-info-soft: rgb(96 165 250 / 0.12);
+  --sl-ring: rgb(58 214 192 / 0.55);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --sl-bg: #f6f7f9;
+  --sl-surface: #ffffff;
+  --sl-surface-2: #f1f3f6;
+  --sl-surface-3: #e7eaf0;
+  --sl-border: #dfe3ea;
+  --sl-border-strong: #c7cdd8;
+  --sl-fg: #11141b;
+  --sl-muted: #4a5265;
+  --sl-subtle: #6b7386;
+  --sl-accent: #0d8a7a;
+  --sl-accent-fg: #ffffff;
+  --sl-accent-soft: rgb(13 138 122 / 0.1);
+  --sl-success: #15803d;
+  --sl-success-soft: rgb(21 128 61 / 0.1);
+  --sl-danger: #c62828;
+  --sl-danger-soft: rgb(198 40 40 / 0.08);
+  --sl-warning: #a16207;
+  --sl-warning-soft: rgb(161 98 7 / 0.1);
+  --sl-info: #1d4ed8;
+  --sl-info-soft: rgb(29 78 216 / 0.08);
+  --sl-ring: rgb(13 138 122 / 0.45);
+}
+
+@theme inline {
+  --color-bg: var(--sl-bg);
+  --color-surface: var(--sl-surface);
+  --color-surface-2: var(--sl-surface-2);
+  --color-surface-3: var(--sl-surface-3);
+  --color-border: var(--sl-border);
+  --color-border-strong: var(--sl-border-strong);
+  --color-fg: var(--sl-fg);
+  --color-muted: var(--sl-muted);
+  --color-subtle: var(--sl-subtle);
+  --color-accent: var(--sl-accent);
+  --color-accent-fg: var(--sl-accent-fg);
+  --color-accent-soft: var(--sl-accent-soft);
+  --color-success: var(--sl-success);
+  --color-success-soft: var(--sl-success-soft);
+  --color-danger: var(--sl-danger);
+  --color-danger-soft: var(--sl-danger-soft);
+  --color-warning: var(--sl-warning);
+  --color-warning-soft: var(--sl-warning-soft);
+  --color-info: var(--sl-info);
+  --color-info-soft: var(--sl-info-soft);
+  --color-ring: var(--sl-ring);
+
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  --font-mono:
+    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--sl-bg);
+  }
+  body {
+    @apply bg-bg font-sans text-fg antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  ::selection {
+    background-color: var(--sl-accent-soft);
+  }
+  :focus-visible {
+    outline: 2px solid var(--sl-ring);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
