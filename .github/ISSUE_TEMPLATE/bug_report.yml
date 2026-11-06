@@ -1,0 +1,32 @@
+name: Bug report
+description: Something in the SorobanLens UI is broken or behaves incorrectly
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Go to …\n2. Enter hash …\n3. See error"
+    validations:
+      required: true
+  - type: input
+    id: hash
+    attributes:
+      label: Transaction hash and network (if relevant)
+      description: Public data only. Never paste secret keys.
+  - type: input
+    id: versions
+    attributes:
+      label: Frontend / backend version
+      description: Shown in the sidebar and on the Settings page.
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and OS
